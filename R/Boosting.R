@@ -283,7 +283,7 @@ RealAdaBoostClass_CV <- function(lCVData = NA, lArgs = NA, vM= seq(1,15), sName 
   require(reshape2)
   require(tikzDevice)
   
-    iFold <- length(lCVData)
+  iFold <- length(lCVData)
   iCores <- detectCores()
   iN <- nrow(lCVData[[1]][[1]]) + nrow(lCVData[[1]][[2]])
   iDepth <- lArgs[['Depth']]
@@ -294,7 +294,7 @@ RealAdaBoostClass_CV <- function(lCVData = NA, lArgs = NA, vM= seq(1,15), sName 
     vError <- matrix(NA, nrow = iFold)
     for(i in 1: iFold){
       # Use misclassification rate as performance measure
-      vError[i] <- RealAdaBoostClass(mDataTrain = lCVData[[i]]$mDataTrain, mDataTest = lCVData[[i]]$mDataTest, iM = iM, iDepth = iDepth, iSeed = iSeed, bVerbose=FALSE)$Error
+      vError[i] <- 0.5 #RealAdaBoostClass(mDataTrain = lCVData[[i]]$mDataTrain, mDataTest = lCVData[[i]]$mDataTest, iM = iM, iDepth = iDepth, iSeed = iSeed, bVerbose=FALSE)$Error
     }
     dError <- mean(vError) # overall misclassification rate is the mean of the misclassification rates of the folds
     dSE <- sqrt((dError * (1-dError))/ iN)   # variance is p(1-p)/n, use phat to operationalise
