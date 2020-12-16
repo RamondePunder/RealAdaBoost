@@ -282,8 +282,7 @@ RealAdaBoostClass_CV <- function(lCVData = NA, lArgs = NA, vM= seq(1,15), sName 
                  doParallel,    # detect cores
                  ggplot2,       # plotting
                  reshape2,       # melt function
-                 tikzDevice,    # create tikzfiles 
-                 DiagrammeR,    # timing
+                 tikzDevice)    # create tikzfiles 
                  
   # Initialisation
   iFold <- length(lCVData)
