@@ -277,13 +277,12 @@ RealAdaBoostClass <- function(mDataTrain = NA, mDataTest = NA, iM = 10, iDepth =
 RealAdaBoostClass_CV <- function(lCVData = NA, lArgs = NA, vM= seq(1,15), sName ='', bPlot = TRUE){
 
   # Packages
-  if (!require("pacman")) install.packages("pacman")
-  pacman::p_load(rstudioapi,    # set working directory
-                 doParallel,    # detect cores
-                 ggplot2,       # plotting
-                 reshape2,       # melt function
-                 tikzDevice)    # create tikzfiles 
-                 
+  require(rstudioapi)
+  require(doParallel)
+  require(ggplot2)
+  require(reshape2)
+  require(tikzDevice)
+  
   # Initialisation
   iFold <- length(lCVData)
   iCores <- detectCores()
