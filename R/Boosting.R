@@ -295,6 +295,7 @@ RealAdaBoostClass_CV <- function(lCVData = NA, lArgs = NA, vM= seq(1,15), sName 
     vError <- matrix(NA, nrow = iFold)
     for(i in 1: iFold){
       # Use misclassification rate as performance measure
+      print(RealAdaBoostClass(mDataTrain = lCVData[[i]]$mDataTrain, mDataTest = lCVData[[i]]$mDataTest, iM = iM, iDepth = iDepth, iSeed = iSeed, bVerbose=FALSE)$Error)
       vError[i] <- RealAdaBoostClass(mDataTrain = lCVData[[i]]$mDataTrain, mDataTest = lCVData[[i]]$mDataTest, iM = iM, iDepth = iDepth, iSeed = iSeed, bVerbose=FALSE)$Error
     }
     dError <- mean(vError) # overall misclassification rate is the mean of the misclassification rates of the folds
